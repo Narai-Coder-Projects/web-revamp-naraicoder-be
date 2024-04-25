@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\SocialMedia;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class SocialMediaSeeder extends Seeder
 {
@@ -12,6 +13,12 @@ class SocialMediaSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        for ($i = 0; $i < 10; $i++) {
+            SocialMedia::create([
+                'name' => fake()->company,
+                'url' => 'https://www.' . fake()->domainName,
+                'icon' => 'https://via.placeholder.com/640x480.png',
+            ]);
+        }
     }
 }
