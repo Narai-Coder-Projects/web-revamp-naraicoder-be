@@ -1,0 +1,50 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentation  API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/about": {
+            "get": {
+                "tags": [
+                    "About"
+                ],
+                "summary": "Get About Information",
+                "description": "enter your description here",
+                "operationId": "getAbout",
+                "responses": {
+                    "default": {
+                        "description": "return array model todo"
+                    }
+                }
+            }
+        },
+        "/api/members": {
+            "get": {
+                "tags": [
+                    "Members"
+                ],
+                "summary": "Get Members Information",
+                "description": "Retrieve a paginated list of members (10 per page) with optional filtering by name.",
+                "operationId": "getMembers",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search term for filtering members by full name.",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "return array model todo"
+                    }
+                }
+            }
+        }
+    }
+}

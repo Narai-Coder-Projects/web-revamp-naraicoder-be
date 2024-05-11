@@ -11,6 +11,20 @@ use Exception;
 
 class AboutController extends Controller
 {
+
+    /**
+     * @OA\Get(
+     *     path="/api/about",
+     *     tags={"About"},
+     *     summary="Get About Information",
+     *     description="enter your description here",
+     *     operationId="getAbout",
+     *     @OA\Response(
+     *         response="default",
+     *         description="return array model about"
+     *     )
+     * )
+     */
     public function index()
     {
        try{

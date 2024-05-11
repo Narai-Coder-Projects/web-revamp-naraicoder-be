@@ -13,6 +13,26 @@ use Illuminate\Http\Request;
 class MemberController extends Controller
 {
 
+     /**
+     * @OA\Get(
+     *     path="/api/members",
+     *     tags={"Members"},
+     *     summary="Get Members Information",
+     *     description="Retrieve a paginated list of members (10 per page) with optional filtering by name.",
+     *     operationId="getMembers",
+     *      @OA\Parameter(
+     *         name="search",
+     *         in="query",
+     *         description="Search term for filtering members by full name.",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="return array model members"
+     *     )
+     * )
+     */
     public function index(Request $request)
     {
         try {
