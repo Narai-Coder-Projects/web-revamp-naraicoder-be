@@ -14,7 +14,7 @@ class AboutController extends Controller
     public function index()
     {
        try{
-        $about = About::find(2);
+        $about = About::find(1);
         if ($about) {
             return ResponseFormatter::success($about);
         } else {
