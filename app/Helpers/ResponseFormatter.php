@@ -11,7 +11,7 @@ class ResponseFormatter
 
     public static function setDefaultStatusCode()
     {
-        self::$statusCodeOk = HttpStatusCodes::OK; 
+        self::$statusCodeOk = HttpStatusCodes::ok; 
         self::$statusMessage = HttpStatusCodes::getMessage(self::$statusCodeOk);
     }
 

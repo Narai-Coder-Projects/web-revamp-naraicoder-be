@@ -26,18 +26,18 @@ class MemberController extends Controller
             }
 
             $members = $query->paginate(10);
-            $last_page =  $members->lastPage();
-            $current_page = $members->currentPage();
+            $totalPage =  $members->lastPage();
+            $currentPage = $members->currentPage();
 
 
             $formattedMembers = MemberResource::collection($members);
 
-            if($current_page > $last_page){
-                $statusCode = HttpStatusCodes::NOT_FOUND;
+            if($currentPage > $totalPage){
+                $statusCode = HttpStatusCodes::notFound;
                 $statusMessage = HttpStatusCodes::getMessage($statusCode);
                 return ResponseFormatter::error($statusMessage,  $statusCode);
             }else{
-                return ResponseFormatter::success($formattedMembers, $last_page,  $current_page);
+                return ResponseFormatter::success($formattedMembers, $totalPage,  $currentPage);
             }
             
             

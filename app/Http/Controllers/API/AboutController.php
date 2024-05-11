@@ -18,7 +18,7 @@ class AboutController extends Controller
         if ($about) {
             return ResponseFormatter::success($about);
         } else {
-            $statusCode = HttpStatusCodes::NOT_FOUND;
+            $statusCode = HttpStatusCodes::notFound;
             $statusMessage = HttpStatusCodes::getMessage($statusCode);
             return ResponseFormatter::error($statusMessage,  $statusCode);
         }
