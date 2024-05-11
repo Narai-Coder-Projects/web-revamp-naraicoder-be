@@ -29,7 +29,7 @@ class MemberController extends Controller
      *     ),
      *     @OA\Response(
      *         response="default",
-     *         description="return array model todo"
+     *         description="return array model members"
      *     )
      * )
      */

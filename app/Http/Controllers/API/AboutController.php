@@ -21,7 +21,7 @@ class AboutController extends Controller
      *     operationId="getAbout",
      *     @OA\Response(
      *         response="default",
-     *         description="return array model todo"
+     *         description="return array model about"
      *     )
      * )
      */
