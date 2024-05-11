@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AboutController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,11 +14,7 @@ Route::get('/articles', function () {
  ]);
 });
 
-Route::get('/about', function () {
-    return response()->json([
-        'about' => App\Models\About::find(1),
-    ]);
-});
+Route::get('/about', [AboutController::class, 'index']);
 
 Route::get('/members', function () {
     return response()->json([
