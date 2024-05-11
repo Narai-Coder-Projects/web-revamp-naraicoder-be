@@ -17,7 +17,7 @@ class ResponseFormatter
 
 
 
-    public static function success($data = null)
+    public static function success($data = null, $totalPage = null, $currentPage = null)
     {
         self::setDefaultStatusCode();
         $response = [
@@ -25,6 +25,14 @@ class ResponseFormatter
             'message' => self::$statusMessage,
             'data' => $data,      
         ];
+
+        if ($totalPage !== null) {
+            $response['total_page'] = $totalPage;
+        }
+    
+        if ($currentPage !== null) {
+            $response['current_page'] = $currentPage;
+        }
 
         return response()->json($response, self::$statusCodeOk,);
     }

@@ -2,17 +2,48 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Constants\HttpStatusCodes;
+use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MemberResource;
+use App\Models\Member;
 use Illuminate\Http\Request;
+
 
 class MemberController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function index(Request $request)
     {
-        //
+        try {
+            $query = Member::query();
+            $searchTerm = $request->input('search');
+
+         
+
+            if (!empty($searchTerm)) {
+                $query->where('full_name', 'LIKE', '%' . $searchTerm . '%');
+            }
+
+            $members = $query->paginate(10);
+            $last_page =  $members->lastPage();
+            $current_page = $members->currentPage();
+
+
+            $formattedMembers = MemberResource::collection($members);
+
+            if($current_page > $last_page){
+                $statusCode = HttpStatusCodes::NOT_FOUND;
+                $statusMessage = HttpStatusCodes::getMessage($statusCode);
+                return ResponseFormatter::error($statusMessage,  $statusCode);
+            }else{
+                return ResponseFormatter::success($formattedMembers, $last_page,  $current_page);
+            }
+            
+            
+        } catch (\Exception $e) {
+            return ResponseFormatter::error($e->getMessage(), $e->getCode());
+        }
     }
 
     /**

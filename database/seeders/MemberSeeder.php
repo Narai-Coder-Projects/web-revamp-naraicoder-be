@@ -13,11 +13,11 @@ class MemberSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             Member::create([
-                'user_id' => rand(1, 10),
-                'member_id' => rand(1, 10),
-                'image' => 'https://via.placeholder.com/640x480.png',
+                'user_id' => rand(1, 100),
+                'member_id' => rand(1, 100),
+                'image' => 'asset/ImageProfil/4OU1aqMiOPMtLxPbRehDByucDWibjgIaAlxQgmf0.png',
                 'full_name' => fake()->name,
                 'phone_number' => fake()->phoneNumber,
                 'place' => fake()->city,

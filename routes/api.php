@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AboutController;
+use App\Http\Controllers\API\MemberController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,10 +17,12 @@ Route::get('/articles', function () {
 
 Route::get('/about', [AboutController::class, 'index']);
 
-Route::get('/members', function () {
-    return response()->json([
-        'members' => App\Models\Member::all(),
-    ]);
+Route::prefix('members')->group(function () {
+    Route::get('/', [MemberController::class, 'index'])->name('members.index');
+    Route::post('/', [MemberController::class, 'store'])->name('members.store');
+    Route::get('/{id}', [MemberController::class, 'show'])->name('members.show');
+    Route::put('/{id}', [MemberController::class, 'update'])->name('members.update');
+    Route::delete('/{id}', [MemberController::class, 'destroy'])->name('members.destroy');
 });
 
 Route::get('/comments', function () {
